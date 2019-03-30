@@ -2,7 +2,7 @@
 
 [gas-library-pixela](https://github.com/noissefnoc/gas-library-pixela) is unofficial [pixe.la](https://pixe.la) API client for [Google Apps Script](https://developers.google.com/apps-script/).
 
-WARNING: THIS IS VERY ALPHA VERSION. SO API COULD CAHNGE.
+WARNING: THIS IS VERY ALPHA VERSION. SO API COULD CAHNGE. AND I DON'T KNOW GOOGLE APPS SCRIPT LIBRARY CALL LIMITATION. IF I QUOTED, THIS LIBRARY CAN'T CALL.
 
 * Project ID: `1lYZA6IF2D62qUb3prkWH4UX5zLEaqy1VrbU2jOwHM3hdjkl7gG3nh33Y`
 

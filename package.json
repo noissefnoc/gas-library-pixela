@@ -1,0 +1,23 @@
+{
+  "name": "gas-library-pixela",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/clasp": "^2.1.0",
+    "@types/google-apps-script": "0.0.41",
+    "@types/node": "^11.12.1",
+    "tslint": "^5.14.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1"
+  }
+}

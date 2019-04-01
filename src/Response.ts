@@ -1,3 +1,10 @@
+/**
+ * @file pixe.la API Client Response
+ * @author Kota SAITO <noissefnoc@gmail.com>
+ * @version v1.0.0
+ * @see {@link https://github.com/noissefnoc/gas-library-pixela}
+ */
+
 interface BasicResponse {
   message: string;
   isSuccess: boolean;

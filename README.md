@@ -1,16 +1,31 @@
 # gas-library-pixela
 
+WARNING: THIS IS VERY ALPHA VERSION. SO API COULD CAHNGE. 
+
+AND I DON'T KNOW GOOGLE APPS SCRIPT LIBRARY CALL LIMITATION. IF QUOTED, THIS LIBRARY CAN'T CALL.
+
 [gas-library-pixela](https://github.com/noissefnoc/gas-library-pixela) is unofficial [pixe.la](https://pixe.la) API client for [Google Apps Script](https://developers.google.com/apps-script/).
 
-WARNING: THIS IS VERY ALPHA VERSION. SO API COULD CAHNGE. AND I DON'T KNOW GOOGLE APPS SCRIPT LIBRARY CALL LIMITATION. IF I QUOTED, THIS LIBRARY CAN'T CALL.
+By using this script you can
 
-* Project ID: `1lYZA6IF2D62qUb3prkWH4UX5zLEaqy1VrbU2jOwHM3hdjkl7gG3nh33Y`
+* provide simple GUI application for non-developers
+    * create user/graph/pixel/webhook with Google form or Google Spreadsheet
+    * manage user/graph/pixel/webhook ledger with Google Spreadsheet
+* ease to recording and posting to pixela
+    * write records on the Google Spreadsheet and post pixela automatically
+* and so on.
 
+
+## Prepare to use
+
+### Copy to your Google Apps Script project
+
+You can copy this library to your Google Apps Script project from [GitHub Release](https://github.com/noissefnoc/gas-library-pixela/releases)(Pixela.gs file).
 
 ### Step to add library to your Google Apps Script project
 
 1. Select `Resources > Libraries...`.
-2. Paste in the project key of the library ( `1lYZA6IF2D62qUb3prkWH4UX5zLEaqy1VrbU2jOwHM3hdjkl7gG3nh33Y` ) into the `Add a Library` text box.
+2. Paste in the project key of the library ( Project ID: `1lYZA6IF2D62qUb3prkWH4UX5zLEaqy1VrbU2jOwHM3hdjkl7gG3nh33Y` ) into the `Add a Library` text box.
 3. Click `Add` to the library to your project.
 4. Click the `Version` dropdown and select a version of this library.
 5. Click `Save` to save the libraries you have added and close the dialog box.
@@ -20,7 +35,7 @@ Google Apps Script provides other features (such as Changing default Identifier)
 
 ## Synopsis
 
-NOTE: Following usages omit expection handling. But Pixela methods raise exception from Google Apps Script `UrlFetchApp()` function when HTTP request failed. So you add exeption handling code to following codes as necessary. 
+NOTE: Following usages omit expection handling. But Pixela methods raise exception from Google Apps Script `UrlFetchApp()` and `JSON.parse()` function when HTTP request failed. So you add exeption handling code to following codes as necessary. 
 
 ### Create user (just one time)
 

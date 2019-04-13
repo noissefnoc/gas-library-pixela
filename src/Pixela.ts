@@ -194,7 +194,7 @@ class Pixela_ {
    * </p>
    * @param {string} graphID pixe.la graph ID
    * @param {string} dateStr pixel date (yyyyMMdd)
-   * @param {string} mode graph display mode
+   * @param {string} mode graph display mode (short: grass graph / line: line chart)
    * @return {string} get-svg API response value.
    */
   public getSvg(graphID: string, dateStr?: string, mode?: string): string {
@@ -677,7 +677,7 @@ function createGraph(
  * call pixe.la get-graph API (https://docs.pixe.la/#/get-graph).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.getGraph();
  * Logger.log(response);
  * </pre>
@@ -695,13 +695,13 @@ function getGraph() {
  * call pixe.la get-svg API (https://docs.pixe.la/#/get-svg).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
- * var response = pixela.getSvg();
+ * var pixela = Pixela.create(username, token);
+ * var response = pixela.getSvg(dateStr, mode);
  * Logger.log(response);
  * </pre>
  * @param {string} graphID pixe.la graph ID
  * @param {string} dateStr pixel date (yyyyMMdd)
- * @param {string} mode graph display mode
+ * @param {string} mode graph display mode (short: grass graph / line: line chart)
  * @return {string} get-svg API response value.
  */
 function getSvg(graphID: string, dateStr?: string, mode?: string) {
@@ -716,7 +716,7 @@ function getSvg(graphID: string, dateStr?: string, mode?: string) {
  * call pixe.la put-graph API (https://docs.pixe.la/#/put-graph).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.updateGraph(graphID, graphName, unit, type, color, timezone, selfSufficient);
  * Logger.log(response);
  * </pre>
@@ -736,7 +736,7 @@ function updateGraph(graphID: string, payload: object) {
  * call pixe.la delete-graph API (https://docs.pixe.la/#/delete-graph).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.deleteGraph(graphID);
  * Logger.log(response);
  * </pre>
@@ -755,8 +755,8 @@ function deleteGraph(graphID: string) {
  * call pixe.la get-graph-pixels API (https://docs.pixe.la/#/get-graph-pixels).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
- * var response = pixela.deleteGraph(graphID);
+ * var pixela = Pixela.create(username, token);
+ * var response = pixela.getGraphPixelsDate(graphID, fromDateStr, toDateStr);
  * Logger.log(response);
  * </pre>
  * @param {string} graphID pixe.la graph ID
@@ -782,14 +782,14 @@ function getGraphPixelsDate(
  * </p>
  * <h3>Usage</h3>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.createPixel(graphID, dateStr, quantity, optionalData);
  * Logger.log(response);
  * </pre>
  * @param {string} graphID pixe.la graph ID
  * @param {string} dateStr pixel date (yyyyMMdd)
  * @param {number} quantity pixel quantity (int/float)
- * @param {object} optionalData
+ * @param {object} optionalData optional data (js object you want to record)
  * @return {object} post-pixel API response value.
  */
 function createPixel(
@@ -810,7 +810,7 @@ function createPixel(
  * </p>
  * <h3>Usage</h3>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var pixel_value = pixela.getPixel(graphID, dateStr);
  * Logger.log(pixel_value);
  * </pre>
@@ -831,14 +831,14 @@ function getPixel(graphID: string, dateStr: string) {
  * </p>
  * <h3>Usage</h3>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.updatePixel(graphID, dateStr, quantity, optionalData);
  * Logger.log(response);
  * </pre>
  * @param {string} graphID pixe.la graph ID
  * @param {string} dateStr pixel date (yyyyMMdd)
  * @param {number} quantity pixel quantity (int/float)
- * @param {object} optionalData
+ * @param {object} optionalData optional data (js object you want to record)
  * @return {onject} put-pixel API response value.
  */
 function updatePixel(
@@ -859,7 +859,7 @@ function updatePixel(
  * </p>
  * <h3>Usage</h3>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.incPixel(graphID);
  * Logger.log(response);
  * </pre>
@@ -879,7 +879,7 @@ function incPixel(graphID: string) {
  * </p>
  * <h3>Usage</h3>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.decPixel(graphID);
  * Logger.log(response);
  * </pre>
@@ -899,8 +899,8 @@ function decPixel(graphID: string) {
  * </p>
  * <h3>Usage</h3>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
- * var response = pixela.deletePixel(graphID);
+ * var pixela = Pixela.create(username, token);
+ * var response = pixela.deletePixel(graphID, dateStr);
  * Logger.log(response);
  * </pre>
  * @param {string} graphID pixe.la graph ID
@@ -920,7 +920,7 @@ function deletePixel(graphID: string, dateStr: string) {
  * call pixe.la post-webhook API (https://docs.pixe.la/#/post-webhook).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.createWebhook(graphID, webhookType);
  * Logger.log(response);
  * </pre>
@@ -940,7 +940,7 @@ function createWebhook(graphID: string, webhookType: string) {
  * call pixe.la get-webhook API (https://docs.pixe.la/#/get-webhook).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.getWebhook();
  * Logger.log(response);
  * </pre>
@@ -958,7 +958,7 @@ function getWebhook() {
  * call pixe.la invoke-webhook API (https://docs.pixe.la/#/invoke-webhook).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.invokeWebhook(webhookHash);
  * Logger.log(response);
  * </pre>
@@ -977,7 +977,7 @@ function invokeWebhook(webhookHash: string) {
  * call pixe.la delete-webhook API (https://docs.pixe.la/#/delete-webhook).
  * </p>
  * <pre>
- * var pixela = Pixela.create(username, token, debug);
+ * var pixela = Pixela.create(username, token);
  * var response = pixela.deleteWebhook(webhookHash);
  * Logger.log(response);
  * </pre>

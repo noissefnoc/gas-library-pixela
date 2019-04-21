@@ -1,7 +1,7 @@
 /**
  * @file pixe.la API Client Response
  * @author Kota SAITO <noissefnoc@gmail.com>
- * @version v1.0.0
+ * @version v2.0.0
  * @see {@link https://github.com/noissefnoc/gas-library-pixela}
  */
 
@@ -42,4 +42,13 @@ interface WebhooksItem {
   webhookHash: string;
   graphID: string;
   type: string;
+}
+
+interface GraphStatResponse {
+  totalPixelsCount: number;
+  maxQuantity: number;
+  minQuantity: number;
+  totalQuantity: number;
+  avgQuantity: number;
+  todaysQuantity: number;
 }

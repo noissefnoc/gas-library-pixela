@@ -1,7 +1,7 @@
 /**
  * @file pixe.la API Client
  * @author Kota SAITO <noissefnoc@gmail.com>
- * @version v1.0.0
+ * @version v2.0.0
  * @see {@link https://github.com/noissefnoc/gas-library-pixela}
  */
 
@@ -274,6 +274,22 @@ class Pixela_ {
       from: fromDateStr,
       to: toDateStr
     });
+    const responseBodyText = this.client.get(requestURL);
+    const response = JSON.parse(responseBodyText);
+
+    return response;
+  }
+
+  /**
+   * call get-graph-stat API<br/>
+   * <p>
+   * call pixe.la get-graph-stat API (https://docs.pixe.la/#/get-graph-stat).
+   * </p>
+   * @param {string} graphID pixe.la graph ID
+   * @return {object} get-graph-stat API response value.
+   */
+  public getGraphStat(graphID: string): object {
+    const requestURL: string = this.generateDetailURL(graphID, "stats");
     const responseBodyText = this.client.get(requestURL);
     const response = JSON.parse(responseBodyText);
 
@@ -769,6 +785,20 @@ function getGraphPixelsDate(
   fromDateStr?: string,
   toDateStr?: string
 ) {
+  throw new Error(
+    "This method can't call directry. Please call via `create` method return value."
+  );
+}
+
+/**
+ * call get-graph-stat API<br/>
+ * <p>
+ * call pixe.la get-graph-stat API (https://docs.pixe.la/#/get-graph-stat).
+ * </p>
+ * @param {string} graphID pixe.la graph ID
+ * @return {object} get-graph-stat API response value.
+ */
+function getGraphStat(graphID: string) {
   throw new Error(
     "This method can't call directry. Please call via `create` method return value."
   );

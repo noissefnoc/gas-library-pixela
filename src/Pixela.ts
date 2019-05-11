@@ -1,7 +1,7 @@
 /**
  * @file pixe.la API Client
  * @author Kota SAITO <noissefnoc@gmail.com>
- * @version v2.0.0
+ * @version v3.0.0
  * @see {@link https://github.com/noissefnoc/gas-library-pixela}
  */
 
@@ -66,11 +66,13 @@ class Pixela_ {
    * </p>
    * @param {string} agreeTermsOfService agree terms of service or not (yes/no)
    * @param {string} notMinor usage is not minor or not (yes/no)
+   * @param {boolean} thanksCode optional: Patreon thanks-code
    * @return {BasicResponse} post-user API response value.
    */
   public createUser(
     agreeTermsOfService: string,
-    notMinor: string
+    notMinor: string,
+    thanksCode?: boolean
   ): BasicResponse {
     const requestURL: string = this.generateUserURL();
 
@@ -78,7 +80,8 @@ class Pixela_ {
       username: this.username,
       token: this.token,
       agreeTermsOfService: agreeTermsOfService,
-      notMinor: notMinor
+      notMinor: notMinor,
+      thanksCode: thanksCode !== undefined ? thanksCode : false
     };
 
     const responseBodyText = this.client.post(requestURL, payload);
@@ -93,13 +96,15 @@ class Pixela_ {
    * call pixe.la put-user API (https://docs.pixe.la/#/put-user).
    * </p>
    * @param {string} newToken new user token
+   * @param {boolean} thanksCode optional: Patreon thanks-code
    * @return {BasicResponse} put-user API response value.
    */
-  public updateUser(newToken: string): BasicResponse {
+  public updateUser(newToken: string, thanksCode?: boolean): BasicResponse {
     const requestURL: string = this.generateUserIDURL();
 
     const payload = {
-      newToken: newToken
+      newToken: newToken,
+      thanksCode: thanksCode !== undefined ? thanksCode : false
     };
 
     const responseBodyText = this.client.put(requestURL, payload);
@@ -137,6 +142,7 @@ class Pixela_ {
    * @param {string} color
    * @param {string} timezone
    * @param {string} selfSufficient
+   * @param {boolean} isSecret hide on graph list
    * @return {BasicResponse} post-graph API response value.
    */
   public createGraph(
@@ -146,7 +152,8 @@ class Pixela_ {
     type: string,
     color: string,
     timezone?: string,
-    selfSufficient?: string
+    selfSufficient?: string,
+    isSecret?: boolean
   ): BasicResponse {
     const requestURL: string = this.generateGraphsURL();
 
@@ -155,7 +162,8 @@ class Pixela_ {
       name: graphName,
       unit: unit,
       type: type,
-      color: color
+      color: color,
+      isSecret: isSecret !== undefined ? isSecret : false
     };
 
     if (timezone !== undefined) {
@@ -223,7 +231,8 @@ class Pixela_ {
       "type",
       "color",
       "timezone",
-      "selfSufficient"
+      "selfSufficient",
+      "isSecret"
     ];
 
     elements.forEach(elem => {
@@ -608,9 +617,14 @@ function setToken(token: string) {
  * </pre>
  * @param {string} agreeTermsOfService agree terms of service or not
  * @param {string} notMinor usage is not minor or not
+ * @param {boolean} thanksCode optional: Patreon thanks-code
  * @return {object} post-user API response value.
  */
-function createUser(agreeTermsOfService: string, notMinor: string) {
+function createUser(
+  agreeTermsOfService: string,
+  notMinor: string,
+  thanksCode?: boolean
+) {
   throw new Error(
     "This method can't call directry. Please call via `create` method return value."
   );
@@ -627,9 +641,10 @@ function createUser(agreeTermsOfService: string, notMinor: string) {
  * Logger.log(response);
  * </pre>
  * @param {string} newToken new user token
+ * @param {boolean} thanksCode optional: Patreon thanks-code
  * @return {object} put-user API response value.
  */
-function updateUser(newToken: string) {
+function updateUser(newToken: string, thanksCode?: boolean) {
   throw new Error(
     "This method can't call directry. Please call via `create` method return value."
   );
@@ -671,6 +686,7 @@ function deleteUser() {
  * @param {string} color graph color (shibafu/momiji/sora/ichou/ajisai/kuro)
  * @param {string} timezone timezone (default: UTC)
  * @param {string} selfSufficient (default: none)
+ * @param {boolean} isSecret (default: false)
  * @return {object} post-graph API response value.
  */
 function createGraph(
@@ -680,7 +696,8 @@ function createGraph(
   type: string,
   color: string,
   timezone?: string,
-  selfSufficient?: string
+  selfSufficient?: string,
+  isSecret?: boolean
 ) {
   throw new Error(
     "This method can't call directry. Please call via `create` method return value."

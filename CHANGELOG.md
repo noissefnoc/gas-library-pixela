@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [4.0.0] - 2020-03-20
+
+* migrate to V8 engine
+
 ## [3.0.0] - 2019-05-11
 
 * update according to [Pixela v1.11.0 release](https://github.com/a-know/Pixela/releases/tag/v1.11.0)

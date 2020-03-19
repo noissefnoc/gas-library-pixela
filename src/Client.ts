@@ -1,7 +1,7 @@
 /**
  * @file pixe.la API basic Client
  * @author Kota SAITO <noissefnoc@gmail.com>
- * @version v3.0.0
+ * @version v4.0.0
  * @see {@link https://github.com/noissefnoc/gas-library-pixela}
  */
 

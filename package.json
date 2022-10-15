@@ -10,11 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "prettier": "^2.5.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.3.0",
-    "@google/clasp": "2.4.1",
-    "@types/google-apps-script": "1.0.41",
-    "@types/node": "^17.0.5"
+    "prettier": "^2.7.1",
+    "eslint-config-prettier": "8.5.0",
+    "@google/clasp": "2.4.2",
+    "@types/google-apps-script": "1.0.55",
+    "@types/node": "^18.11.0"
   }
 }
